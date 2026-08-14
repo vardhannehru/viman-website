@@ -1,0 +1,427 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   VIMAN — DESIGN TOKENS
+   Dark-first luxury aviation system.
+   ========================================================================== */
+
+@theme {
+  /* --- Surface: the void, the hangar, the night sky ---------------------- */
+  --color-void: #04070e;
+  --color-navy-950: #060a14;
+  --color-navy-900: #0a1020;
+  --color-navy-800: #111a2e;
+  --color-navy-700: #1a2740;
+  --color-navy-600: #26364f;
+
+  /* --- Light: cloud & altitude ------------------------------------------ */
+  --color-cloud: #f4f8ff;
+  --color-cloud-dim: #c7d4e8;
+  --color-mist: #8da0bf;
+  --color-mist-deep: #5c6e8c;
+
+  /* --- Accents: strictly rationed --------------------------------------- */
+  /* Brand blue, taken from the VIMAN delta. */
+  --color-brand: #5271f5;
+  --color-brand-soft: #7c93ff;
+  --color-sky: #5aa9ff;
+  --color-cyan: #22e0ff;
+  --color-cyan-deep: #0891b2;
+  --color-gold: #e8c36a;
+  --color-gold-soft: #f5dfae;
+
+  /* --- Typography -------------------------------------------------------- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Fluid scale — every step clamps between mobile and cinema */
+  --text-display: clamp(3.25rem, 11vw, 10.5rem);
+  --text-display--line-height: 0.86;
+  --text-display--letter-spacing: -0.045em;
+  --text-display--font-weight: 500;
+
+  --text-title: clamp(2.5rem, 6.5vw, 5.5rem);
+  --text-title--line-height: 0.92;
+  --text-title--letter-spacing: -0.04em;
+  --text-title--font-weight: 500;
+
+  --text-heading: clamp(1.875rem, 4vw, 3.25rem);
+  --text-heading--line-height: 1.04;
+  --text-heading--letter-spacing: -0.035em;
+  --text-heading--font-weight: 500;
+
+  --text-subhead: clamp(1.25rem, 2.2vw, 1.75rem);
+  --text-subhead--line-height: 1.3;
+  --text-subhead--letter-spacing: -0.02em;
+
+  --text-lead: clamp(1.0625rem, 1.35vw, 1.3125rem);
+  --text-lead--line-height: 1.62;
+  --text-lead--letter-spacing: -0.011em;
+
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1;
+  --text-label--letter-spacing: 0.28em;
+
+  /* --- Radius: large, soft, aeronautical --------------------------------- */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.375rem;
+  --radius-3xl: 1.75rem;
+  --radius-4xl: 2.25rem;
+  --radius-5xl: 3rem;
+
+  /* --- Easing: everything decelerates like an aircraft on approach ------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-swift: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Motion ------------------------------------------------------------ */
+  --animate-float: float 9s var(--ease-in-out-cubic) infinite;
+  --animate-drift: drift 26s linear infinite;
+  --animate-pulse-glow: pulse-glow 3.6s var(--ease-in-out-cubic) infinite;
+  --animate-scan: scan 7s linear infinite;
+  --animate-marquee: marquee 46s linear infinite;
+  --animate-shimmer: shimmer 3s var(--ease-in-out-cubic) infinite;
+  --animate-accordion-down: accordion-down 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-accordion-up: accordion-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(-8%, 0, 0);
+  }
+  to {
+    transform: translate3d(8%, 0, 0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1200%);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    background-position: 200% center;
+  }
+  50% {
+    background-position: -60% center;
+  }
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: color-mix(in oklab, var(--color-navy-700) 60%, transparent);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto; /* Lenis owns scrolling */
+    background-color: var(--color-void);
+  }
+
+  body {
+    background-color: var(--color-void);
+    color: var(--color-cloud);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-cyan) 26%, transparent);
+    color: var(--color-cloud);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Scrollbar — thin, weightless */
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--color-navy-600) 80%, transparent);
+    border-radius: 999px;
+    border: 2px solid var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-navy-600);
+  }
+
+  /* Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+
+/* Glass: the core surface treatment. Layered, never flat. */
+@utility glass {
+  background: linear-gradient(
+    145deg,
+    color-mix(in oklab, var(--color-cloud) 7%, transparent),
+    color-mix(in oklab, var(--color-cloud) 2%, transparent) 42%,
+    transparent
+  );
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid color-mix(in oklab, var(--color-cloud) 9%, transparent);
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, var(--color-cloud) 10%, transparent) inset,
+    0 30px 70px -30px rgb(0 0 0 / 0.85);
+}
+
+@utility glass-strong {
+  background: linear-gradient(
+    145deg,
+    color-mix(in oklab, var(--color-cloud) 11%, transparent),
+    color-mix(in oklab, var(--color-navy-900) 55%, transparent)
+  );
+  backdrop-filter: blur(34px) saturate(160%);
+  -webkit-backdrop-filter: blur(34px) saturate(160%);
+  border: 1px solid color-mix(in oklab, var(--color-cloud) 12%, transparent);
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, var(--color-cloud) 14%, transparent) inset,
+    0 40px 90px -40px rgb(0 0 0 / 0.9);
+}
+
+/* Mono microcopy — the telemetry voice */
+@utility mono-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  line-height: 1;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/*
+ * Gradient text.
+ *
+ * The nested `& span` rule is load-bearing, not decoration. Split-text reveals
+ * wrap every word in its own transformed, will-change span — each of which is
+ * a fresh containing block, so an ancestor's `background-clip: text` cannot
+ * paint through it and the glyphs render as transparent-on-nothing. Re-issuing
+ * the background on descendants gives each span its own paint source. The
+ * gradients are vertical (or near enough), and each span is one line tall, so
+ * per-span and per-line painting are visually identical.
+ */
+@utility text-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--color-cloud) 0%,
+    color-mix(in oklab, var(--color-cloud) 62%, var(--color-mist)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  & span {
+    background: inherit;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@utility text-gradient-cyan {
+  background: linear-gradient(100deg, var(--color-cloud) 8%, var(--color-cyan) 52%, var(--color-sky) 92%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  & span {
+    background: inherit;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@utility text-gradient-gold {
+  background: linear-gradient(100deg, var(--color-gold-soft) 0%, var(--color-gold) 45%, #b8914a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  & span {
+    background: inherit;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Hairline rules that fade at both ends — used everywhere as connective tissue */
+@utility rule-x {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--color-cloud) 16%, transparent) 22%,
+    color-mix(in oklab, var(--color-cloud) 16%, transparent) 78%,
+    transparent
+  );
+}
+
+@utility section-pad {
+  padding-block: clamp(6rem, 13vw, 12rem);
+}
+
+@utility shell {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 4.5rem);
+}
+
+/* Film grain — kills banding on the deep gradients, adds photographic weight */
+@utility grain {
+  position: relative;
+}
+@utility grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.032;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* The horizon glow that sits behind most sections */
+@utility aurora {
+  background:
+    radial-gradient(60% 45% at 50% 0%, color-mix(in oklab, var(--color-sky) 16%, transparent), transparent 70%),
+    radial-gradient(45% 35% at 85% 20%, color-mix(in oklab, var(--color-cyan) 10%, transparent), transparent 70%);
+}
+
+@utility mask-fade-y {
+  mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+@utility mask-fade-x {
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+/* Perspective helpers for card physics */
+@utility perspective-1000 {
+  perspective: 1000px;
+}
+@utility preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
