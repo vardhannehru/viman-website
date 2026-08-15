@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { navItems, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { EASE } from "@/lib/motion";
-import { Button } from "@/components/ui/button";
-import { Magnetic } from "@/components/ui/magnetic";
 import { LogoMark, Wordmark } from "./logo";
 
 export function Navbar() {
@@ -86,12 +84,6 @@ export function Navbar() {
           </ul>
 
           <div className="flex items-center gap-2">
-            <Magnetic strength={0.22}>
-              <Button asChild size="sm" variant="primary" magnetic={false} className="hidden sm:inline-flex">
-                <Link href="/login">Log in</Link>
-              </Button>
-            </Magnetic>
-
             <button
               type="button"
               onClick={() => setOpen(true)}
@@ -130,7 +122,7 @@ export function Navbar() {
               </div>
 
               <ul className="flex flex-1 flex-col justify-center gap-2 px-6">
-                {[...navItems, { label: "Log in", href: "/login" }].map((item, i) => (
+                {navItems.map((item, i) => (
                   <motion.li
                     key={item.href}
                     initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
@@ -152,18 +144,7 @@ export function Navbar() {
                 ))}
               </ul>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, ease: EASE, delay: 0.42 }}
-                className="px-6 pb-10"
-              >
-                <Button asChild size="lg" variant="glow" className="w-full" magnetic={false}>
-                  <Link href="/login" onClick={() => setOpen(false)}>
-                    Log in
-                  </Link>
-                </Button>
-              </motion.div>
+              <div className="px-6 pb-10" />
             </div>
           </motion.div>
         )}

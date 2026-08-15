@@ -85,6 +85,19 @@
   --animate-shimmer: shimmer 3s var(--ease-in-out-cubic) infinite;
   --animate-accordion-down: accordion-down 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-accordion-up: accordion-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slate-in: slate-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* The pre-flight slate: each beat name arrives rather than snapping. */
+@keyframes slate-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes accordion-down {

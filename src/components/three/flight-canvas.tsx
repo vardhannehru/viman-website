@@ -4,17 +4,27 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { flight } from "@/lib/flight-state";
+import { flight, REDUCED_MOTION_FRAME } from "@/lib/flight-state";
+import { GROUND_ACT } from "@/lib/storyboard";
 import { FlightScene } from "./flight-scene";
 
 /**
  * The persistent stage.
  *
- * One canvas, fixed behind the document. It does *not* read scroll to move
- * the aeroplane — the aeroplane is driven by completed stages alone. Scroll
- * only fades the canvas out once the journey section is behind you, and the
- * IntersectionObserver suspends the render loop entirely when it is off
- * screen, so the back half of the page costs nothing.
+ * One canvas, fixed behind the document, and one number written into it.
+ * Scroll is the only clock: there is no autoplay anywhere in the scene, no
+ * timer, and no animation that advances on its own. Stop scrolling and the
+ * film stops on the frame you stopped on; scroll back and it runs backwards.
+ *
+ * The film is scrubbed by two contiguous ScrollTriggers rather than one, so
+ * the story beats stay pinned to the sections that carry them however tall
+ * those sections turn out to be on a given viewport:
+ *
+ *   A  top of the page → top of the roadmap   →  progress 0 → GROUND_ACT
+ *   B  the roadmap itself                     →  progress GROUND_ACT → 1
+ *
+ * They share an edge exactly, so the handover is a single value written twice
+ * rather than a seam.
  */
 export function FlightCanvas({ stageSelector = "#flight-stage" }: { stageSelector?: string }) {
   const wrapper = useRef<HTMLDivElement>(null);
@@ -31,6 +41,10 @@ export function FlightCanvas({ stageSelector = "#flight-stage" }: { stageSelecto
 
     flight.quality = tier;
     flight.reducedMotion = prefersReduced;
+    /* Reduced motion never scrubs, so the scene is parked on one composed
+       frame before it is ever rendered. */
+    if (prefersReduced) flight.progress = REDUCED_MOTION_FRAME;
+
     setQuality(tier);
     setReduced(prefersReduced);
     setMounted(true);
@@ -45,18 +59,28 @@ export function FlightCanvas({ stageSelector = "#flight-stage" }: { stageSelecto
 
     const triggers: ScrollTrigger[] = [];
 
-    // 1 — The flight itself. Progress across the nine roadmap steps is the
-    // timeline: the aeroplane is cold and dark until the roadmap comes into
-    // view, rotates around step 07, and is at cruise by step 09.
+    // 1 — The film. Nothing is scrubbed at all when reduced motion is asked
+    // for: the scene stays on its single settled frame.
     const roadmap = document.querySelector<HTMLElement>("#roadmap");
-    if (roadmap) {
+    if (!flight.reducedMotion && roadmap) {
       triggers.push(
+        // Act I — the ground story, across everything above the roadmap.
+        ScrollTrigger.create({
+          trigger: stage,
+          start: "top top",
+          endTrigger: roadmap,
+          end: "top top",
+          onUpdate: (self) => {
+            flight.progress = self.progress * GROUND_ACT;
+          },
+        }),
+        // Act II — the flight, across the nine roadmap steps.
         ScrollTrigger.create({
           trigger: roadmap,
-          start: "top 72%",
+          start: "top top",
           end: "bottom bottom",
           onUpdate: (self) => {
-            flight.progress = self.progress;
+            flight.progress = GROUND_ACT + self.progress * (1 - GROUND_ACT);
           },
         }),
       );
@@ -107,8 +131,8 @@ export function FlightCanvas({ stageSelector = "#flight-stage" }: { stageSelecto
           stencil: false,
           depth: true,
         }}
-        /* The world is in metres now: the far plane has to clear a 9 km sky
-           dome, and the near plane stays back so depth precision survives it. */
+        /* The world is in metres: the far plane has to clear a 9 km sky dome,
+           and the near plane stays back so depth precision survives it. */
         camera={{ fov: 34, near: 1, far: 20000, position: [58, 17, 74] }}
         onCreated={({ gl, scene }) => {
           gl.setClearColor("#04070e", 1);

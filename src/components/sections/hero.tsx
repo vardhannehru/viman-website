@@ -1,12 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
 import { motion, useScroll, useTransform } from "motion/react";
 import { MoveDown } from "lucide-react";
 import { EASE } from "@/lib/motion";
 import { site } from "@/lib/site";
-import { Button } from "@/components/ui/button";
+import { scrollToSection } from "@/components/providers/smooth-scroll";
 import { Pill } from "@/components/ui/pill";
 
 /**
@@ -88,29 +87,32 @@ export function Hero() {
           </span>
         </h1>
 
-        <motion.div
+        {/* One affordance, and it is the same gesture the whole film runs on.
+            Everything past this point is scrubbed by how far you have read. */}
+        <motion.p
           initial={{ opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: EASE, delay: 0.62 }}
-          className="mt-11 flex flex-wrap items-center gap-3.5"
+          className="mt-11 max-w-md text-lead text-cloud-dim"
         >
-          <Button asChild size="lg" variant="glow">
-            <Link href="/login">Log in</Link>
-          </Button>
-          <Button asChild size="lg" variant="glass">
-            <Link href="#roadmap">
-              Roadmap
-              <MoveDown className="h-4 w-4 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-y-0.5" />
-            </Link>
-          </Button>
-        </motion.div>
+          It is still dark on the ramp. Scroll, and the morning starts.
+        </motion.p>
       </motion.div>
 
-      <motion.div style={{ opacity }} className="shell relative z-10 flex items-center gap-3">
-        <span className="relative flex h-8 w-[1px] overflow-hidden bg-cloud/12">
-          <span className="absolute inset-x-0 h-3 bg-cyan animate-scan" />
-        </span>
-        <span className="mono-label text-mist-deep">Scroll</span>
+      <motion.div style={{ opacity }} className="shell relative z-10">
+        <button
+          type="button"
+          onClick={() => scrollToSection("#stages", -8)}
+          className="group/scroll inline-flex items-center gap-3 rounded-full py-2 pr-4 text-left"
+        >
+          <span className="relative flex h-8 w-[1px] overflow-hidden bg-cloud/12">
+            <span className="absolute inset-x-0 h-3 bg-cyan animate-scan" />
+          </span>
+          <span className="mono-label text-mist-deep transition-colors duration-500 group-hover/scroll:text-cloud">
+            Scroll
+          </span>
+          <MoveDown className="h-3.5 w-3.5 text-mist-deep transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/scroll:translate-y-0.5" />
+        </button>
       </motion.div>
     </section>
   );

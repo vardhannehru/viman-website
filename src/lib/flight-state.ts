@@ -9,9 +9,10 @@
 
 export const flight = {
   /**
-   * Scroll progress across the roadmap, 0 → 1. This is the flight timeline:
-   * step 01 is the aeroplane cold on the ramp, step 09 is cruise. Everything
-   * the aeroplane does is a function of this one number.
+   * The film's one input, 0 → 1, written by ScrollTrigger and nothing else.
+   * 0 is pre-dawn on the ramp, 0.56 is lined up on the runway, 1 is cruise.
+   * Everything visible — aeroplane, taxi, person, sun, sky, camera — is a
+   * pure function of this number, which is why the whole thing scrubs.
    */
   progress: 0,
 
@@ -25,6 +26,14 @@ export const flight = {
   /** Honours prefers-reduced-motion: the scene renders a single static frame. */
   reducedMotion: false,
 
-  /** Live figures published by the scene each frame, for the instrument strip. */
-  readout: { speed: 0, altitude: 0, thrust: 0, distance: 0 },
+  /** Live figures published by the scene each frame, for the instrument strip
+      and for anything on the ground that needs to know where the aeroplane is. */
+  readout: { speed: 0, altitude: 0, thrust: 0, distance: 0, lateral: 0 },
 };
+
+/**
+ * The frame the scene settles on when the visitor has asked for reduced
+ * motion: airborne, gear up, in daylight. Nothing animates, but the page is
+ * not left staring at an unlit aeroplane in the dark either.
+ */
+export const REDUCED_MOTION_FRAME = 0.9;

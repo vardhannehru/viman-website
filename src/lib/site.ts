@@ -423,17 +423,3 @@ export const portals: Portal[] = [
     application: "Akasa Air Careers, or through designated FTO partner portals.",
   },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*  AUTHENTICATION — copy taken from the login screen                         */
-/* -------------------------------------------------------------------------- */
-
-export const auth = {
-  welcome: "Welcome !",
-  username: "Username",
-  password: "Password",
-  logIn: "Log in",
-  forgotPassword: "Forgot Password",
-  create: "Create",
-  noAccount: "Don't Have an Account?",
-} as const;

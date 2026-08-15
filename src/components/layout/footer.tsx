@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { navItems, site } from "@/lib/site";
 import { EASE, viewport } from "@/lib/motion";
@@ -14,11 +13,6 @@ import { Wordmark } from "./logo";
  * social accounts or contact information, so none appear here.
  */
 export function Footer() {
-  const pathname = usePathname();
-
-  // Log in is a focused, full-height task. Nothing below it.
-  if (pathname === "/login") return null;
-
   return (
     <footer className="relative z-10 overflow-hidden border-t border-cloud/8 bg-void">
       <div
@@ -47,7 +41,7 @@ export function Footer() {
           <Reveal delay={0.08}>
             <nav aria-label="Footer">
               <ul className="grid grid-cols-2 gap-x-12 gap-y-3 sm:grid-cols-3 md:grid-cols-2">
-                {[...navItems, { label: "Log in", href: "/login" }].map((link) => (
+                {navItems.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}

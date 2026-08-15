@@ -85,7 +85,10 @@ export function Preloader() {
                 "linear-gradient(90deg, transparent, rgba(34,224,255,0.55) 30%, rgba(90,169,255,0.8) 50%, rgba(34,224,255,0.55) 70%, transparent)",
             }}
             initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: [0, 1, 0.35] }}
+            /* Both tracks carry the same number of keyframes: `times` applies
+               to every animated value, so a bare `scaleX: 1` alongside a
+               three-stop opacity is a run-time error, not a shorthand. */
+            animate={{ scaleX: [0, 1, 1], opacity: [0, 1, 0.35] }}
             transition={{ duration: 1.8, ease: EASE, times: [0, 0.5, 1] }}
           />
 

@@ -24,6 +24,7 @@ export function PathwaySteps() {
           eyebrow="Step-by-Step Pilot Pathway"
           title="Seven steps,"
           accent="in the order they happen."
+          lede="What those nine steps involve in practice — the portals, the papers, the hours and the checks."
         />
 
         <RevealGroup className="mt-20 space-y-4" stagger={0.07}>

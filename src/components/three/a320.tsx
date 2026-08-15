@@ -128,6 +128,10 @@ function buildFinishes() {
     metalness: 1,
     roughness: 0.045,
     envMapIntensity: 3.2,
+    /* Instrument glow, brought up with the aeroplane's power. Barely there —
+       a cockpit at dawn shows as a hint behind the glass, not a lantern. */
+    emissive: new THREE.Color("#5fb4d8"),
+    emissiveIntensity: 0,
   });
 
   /* The exported cabin "windows" are one continuous 21.8 m × 0.44 m sliver
@@ -446,6 +450,8 @@ export const A320 = forwardRef<A320Handle, { quality?: "high" | "low" }>(functio
   const noseLeg = useRef<{ pivot: THREE.Group; oleo: THREE.Group; spin: THREE.Group }>(null);
   const leftLeg = useRef<{ pivot: THREE.Group; oleo: THREE.Group; spin: THREE.Group }>(null);
   const rightLeg = useRef<{ pivot: THREE.Group; oleo: THREE.Group; spin: THREE.Group }>(null);
+  /** The two hot-nozzle lights, so they can follow the throttles. */
+  const engineGlow = useRef<THREE.Group>(null);
 
   /* ---- Rig the imported scene once ---- */
   const rig = useMemo(() => {
@@ -636,6 +642,15 @@ export const A320 = forwardRef<A320Handle, { quality?: "high" | "low" }>(functio
       /* Cabin lighting comes up with the aeroplane's power, and settles a
          touch dimmer once airborne — as the cabin does after takeoff. */
       finishes.window_.emissiveIntensity = c.nav * (0.9 - c.gear * 0.15);
+      finishes.glass.emissiveIntensity = c.nav * 0.32;
+
+      /* The nozzles only throw light when there is something burning in them. */
+      if (engineGlow.current) {
+        const heat = Math.min(1, c.thrust * 1.25) * 14;
+        engineGlow.current.children.forEach((light) => {
+          (light as THREE.PointLight).intensity = heat;
+        });
+      }
     };
   }, [rig, lights, scene, finishes]);
 
@@ -738,11 +753,21 @@ export const A320 = forwardRef<A320Handle, { quality?: "high" | "low" }>(functio
             >
               <circleGeometry args={[0.52, 24]} />
             </mesh>
-            {quality === "high" && (
-              <pointLight position={[-1.1, 0.4, z]} color="#ff8a3d" intensity={9} distance={11} />
-            )}
           </group>
         ))}
+
+        <group ref={engineGlow}>
+          {quality === "high" &&
+            [-6.25, 6.34].map((z) => (
+              <pointLight
+                key={z}
+                position={[-1.1, 0.4, z]}
+                color="#ff8a3d"
+                intensity={0}
+                distance={11}
+              />
+            ))}
+        </group>
       </group>
     </group>
   );

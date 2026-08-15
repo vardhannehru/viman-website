@@ -77,7 +77,12 @@ export function Roadmap() {
       />
 
       <div className="shell relative">
-        <SectionHeading eyebrow="Roadmap" title="Steps to Become" accent="an Airline Pilot." />
+        <SectionHeading
+          eyebrow="Roadmap"
+          title="Steps to Become"
+          accent="an Airline Pilot."
+          lede="Nine steps, in order. Scroll them and the aircraft behind this page flies them with you."
+        />
 
         <Instruments />
 
@@ -108,7 +113,11 @@ export function Roadmap() {
             </span>
           </motion.div>
 
-          <ol className="relative space-y-10 md:space-y-14">
+          {/* The gaps are the flight. Scroll distance across these nine steps
+              is what the takeoff is scrubbed against, so they are spaced for
+              pacing rather than for density — compress them and the rotation
+              happens in a few hundred pixels. */}
+          <ol className="relative space-y-28 md:space-y-48">
             {roadmap.map((step, i) => (
               <RoadmapRow key={step.index} step={step} index={i} lit={i <= reached} />
             ))}
