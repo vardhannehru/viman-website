@@ -81,6 +81,7 @@ export function Roadmap() {
           eyebrow="Roadmap"
           title="Steps to Become"
           accent="an Airline Pilot."
+          serif
           lede="Nine steps, in order. Scroll them and the aircraft behind this page flies them with you."
         />
 

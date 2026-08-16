@@ -66,14 +66,9 @@ export function CursorGlow() {
     <div aria-hidden className="pointer-events-none fixed inset-0 z-[95] hidden md:block">
       <div
         ref={ringRef}
-        className="absolute left-0 top-0 h-10 w-10 rounded-full border border-cyan/30 opacity-70 mix-blend-screen"
-        style={{ boxShadow: "0 0 30px 6px rgba(34,224,255,0.10)" }}
+        className="absolute left-0 top-0 h-8 w-8 rounded-full border border-cloud/25 opacity-60"
       />
-      <div
-        ref={dotRef}
-        className="absolute left-0 top-0 h-1 w-1 rounded-full bg-cyan/90 mix-blend-screen"
-        style={{ boxShadow: "0 0 14px 3px rgba(34,224,255,0.55)" }}
-      />
+      <div ref={dotRef} className="absolute left-0 top-0 h-[3px] w-[3px] rounded-full bg-cloud/70" />
     </div>
   );
 }

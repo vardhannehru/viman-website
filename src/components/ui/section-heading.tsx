@@ -7,12 +7,17 @@ import { TextReveal } from "@/components/motion/text-reveal";
 
 /**
  * The standard section opener: eyebrow, masked headline reveal, lede.
- * Used everywhere so vertical rhythm never drifts between sections.
+ *
+ * `accent` continues the headline. By default it continues it on the same line
+ * in a dimmer weight, which is the quiet case. `serif` promotes it to its own
+ * italic line — that treatment is loud, so it is reserved for the two sections
+ * that open an act rather than applied to every heading on the page.
  */
 export function SectionHeading({
   eyebrow,
   title,
   accent,
+  serif = false,
   lede,
   align = "left",
   tone = "cyan",
@@ -20,8 +25,9 @@ export function SectionHeading({
 }: {
   eyebrow?: string;
   title: string;
-  /** Rendered in italic serif on its own line — one per heading, never more. */
   accent?: string;
+  /** Break the accent onto its own italic serif line. Use sparingly. */
+  serif?: boolean;
   lede?: string;
   align?: "left" | "center";
   tone?: "cyan" | "gold" | "sky" | "neutral";
@@ -41,16 +47,24 @@ export function SectionHeading({
         </Reveal>
       )}
 
-      <h2 className={cn("text-heading text-gradient", eyebrow && "mt-7")}>
+      <h2 className={cn("text-heading text-cloud", eyebrow && "mt-7")}>
         <TextReveal text={title} by="word" />
-        {accent && (
-          <>
-            <br />
-            <span className="font-serif italic text-cloud/95">
-              <TextReveal text={accent} by="word" delay={0.12} />
-            </span>
-          </>
-        )}
+        {accent &&
+          (serif ? (
+            <>
+              <br />
+              <span className="font-serif italic text-cloud/90">
+                <TextReveal text={accent} by="word" delay={0.12} />
+              </span>
+            </>
+          ) : (
+            <>
+              {" "}
+              <span className="text-mist">
+                <TextReveal text={accent} by="word" delay={0.1} />
+              </span>
+            </>
+          ))}
       </h2>
 
       {lede && (

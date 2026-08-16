@@ -18,32 +18,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: [
-          "bg-cloud text-void",
-          "shadow-[0_10px_40px_-12px_rgba(244,248,255,0.45)]",
-          "hover:shadow-[0_18px_60px_-14px_rgba(34,224,255,0.55)]",
-        ],
-        glow: [
-          "text-void",
-          "bg-[linear-gradient(100deg,var(--color-cyan),var(--color-sky))]",
-          "shadow-[0_10px_44px_-12px_rgba(34,224,255,0.65)]",
-          "hover:shadow-[0_20px_70px_-14px_rgba(34,224,255,0.9)]",
-        ],
-        glass: [
-          "glass text-cloud",
-          "hover:border-cyan/35 hover:bg-cloud/[0.09]",
-          "hover:shadow-[0_18px_60px_-24px_rgba(34,224,255,0.5)]",
-        ],
-        gold: [
-          "text-void",
-          "bg-[linear-gradient(100deg,var(--color-gold-soft),var(--color-gold))]",
-          "shadow-[0_10px_40px_-14px_rgba(232,195,106,0.6)]",
-          "hover:shadow-[0_20px_66px_-16px_rgba(232,195,106,0.85)]",
-        ],
+        primary: ["bg-cloud text-void", "hover:bg-white"],
+        glass: ["glass text-cloud", "hover:border-cloud/20 hover:bg-cloud/[0.09]"],
         ghost: ["text-cloud-dim hover:text-cloud", "hover:bg-cloud/[0.06]"],
         outline: [
-          "border border-cloud/15 text-cloud",
-          "hover:border-cyan/45 hover:bg-cyan/[0.06]",
+          "border border-cloud/18 text-cloud",
+          "hover:border-cloud/35 hover:bg-cloud/[0.05]",
         ],
       },
       size: {
@@ -64,13 +44,14 @@ export interface ButtonProps
   asChild?: boolean;
   /** Wraps the button in a magnetic field. On by default for lg/xl. */
   magnetic?: boolean;
-  /** Adds the sheen sweep on hover. */
+  /** Adds the sheen sweep on hover. Off unless a button is genuinely the
+   *  primary call to action on its screen. */
   sheen?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant, size, asChild = false, magnetic, sheen = true, children, ...props },
+    { className, variant, size, asChild = false, magnetic, sheen = false, children, ...props },
     ref,
   ) => {
     const Comp = asChild ? Slot : "button";

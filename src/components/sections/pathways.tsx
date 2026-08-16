@@ -22,7 +22,7 @@ export function Pathways() {
   return (
     <section id="compare" className="relative z-10 section-pad">
       <div className="shell">
-        <SectionHeading title="Cadet Pilot Program" accent="or Traditional Pathway." />
+        <SectionHeading title="Cadet Pilot Program" accent="or Traditional Pathway." serif />
 
         <div className="mt-20 grid gap-5 lg:grid-cols-2">
           {pathways.map((pathway, i) => (
