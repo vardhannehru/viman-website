@@ -8,7 +8,7 @@ import { GlassCard } from "@/components/ui/glass-card";
 import { Reveal } from "@/components/motion/reveal";
 
 /**
- * "Typical Timeline & Investment".
+ * "Timeline & Approx. Investment".
  * The bar under each row is sized by that line's share of the total, which is
  * derived arithmetic on the source's own figures — no new numbers.
  */
@@ -16,7 +16,7 @@ export function Investment() {
   return (
     <section id="investment" className="relative z-10 section-pad">
       <div className="shell">
-        <SectionHeading title="Typical Timeline" accent="& Investment." />
+        <SectionHeading title="Timeline &" accent="Approx. Investment." />
 
         <Reveal className="mt-16">
           <GlassCard className="p-8 md:p-12">

@@ -74,7 +74,7 @@ export function Preloader() {
       {visible && (
         <motion.div
           key="preloader"
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-void"
+          className="theme-dark fixed inset-0 z-[200] flex flex-col items-center justify-center bg-void"
           exit={{ y: "-100%", transition: { duration: 1.15, ease: EASE, delay: 0.15 } }}
         >
           {/* Horizon */}

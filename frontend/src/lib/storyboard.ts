@@ -19,21 +19,21 @@
  *           up, engine start, and the taxi out to the runway.
  *
  *   ACT II  0.56 → 1.00   the flight
- *           The nine roadmap steps. This is the original verified curve —
+ *           The eight roadmap steps. This is the original verified curve —
  *           lined up, TOGA, rotation, gear up, climb, cruise — unchanged in
  *           shape and simply given the whole roadmap to happen across.
  *
  *   p     beat                          roadmap step
  *   ────  ────────────────────────────  ──────────────────────────────
- *   0.56  lined up, holding             01 Complete 12th Board Exams
- *   0.60  brakes released, TOGA         01
- *   0.70  accelerating                  02 Class 2 Medical
- *   0.78  rotation                      03 DGCA & RTR(A) prep
- *   0.81  liftoff                       04 Class 1 Medical
- *   0.88  gear up, initial climb        05 DGCA & RTR(A) exams
- *   0.92  climb, flaps retracting       06 DGCA Computer Number
- *   0.96  climbing through the deck     07 CPL Flight Training
- *   1.00  cruise                        09 Type Rating
+ *   0.56  lined up, holding             01 Prerequisites & Qualifications
+ *   0.60  brakes released, TOGA         02 eGCA Profile & Computer Number
+ *   0.66  the roll                      03 Medical Clearances
+ *   0.72  approaching V1                04 Ground School & Theory Exams
+ *   0.78  rotation                      05 RTR(A) Licence
+ *   0.81  liftoff                       06 Flight Training
+ *   0.88  gear up, initial climb        07 CPL Skill Tests & Issuance
+ *   0.92  climb, flaps retracting       08 Type Rating & Airline Induction
+ *   1.00  cruise                        08
  * ========================================================================== */
 
 /** Where the ground story hands over to the flight. Act I is everything above
@@ -422,5 +422,5 @@ export function taxiRoute(from = 0.4, to = GROUND_ACT + 0.02, steps = 64) {
 /** Copy shown when the last step is reached. Fixed by the brief. */
 export const SUCCESS_MESSAGE = {
   title: "Congratulations",
-  body: "You are now ready for your journey.",
+  body: "You are now a pilot.",
 } as const;

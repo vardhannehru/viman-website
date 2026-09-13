@@ -25,16 +25,24 @@ export default function CookiePolicyPage() {
 
       <h2>What is stored instead</h2>
       <p>
-        One value is written to your browser&rsquo;s session storage, which the browser discards
-        when you close the tab. It is never sent to our servers.
+        Two values are written to your browser&rsquo;s own storage. Neither is ever sent to our
+        servers.
       </p>
       <ul>
         <li>
           <strong>
             <code>viman:booted</code>
           </strong>{" "}
-          — records that you have already seen the opening sequence, so it does not replay every
-          time you navigate within the site. Cleared when the tab closes.
+          (session storage) — records that you have already seen the opening sequence, so it does
+          not replay every time you navigate within the site. Cleared when the tab closes.
+        </li>
+        <li>
+          <strong>
+            <code>viman:progress</code>
+          </strong>{" "}
+          (local storage) — the roadmap steps you have ticked as completed, so your progress is
+          still there next time you visit. Written only when you tick a step; it stays until you
+          untick the step or clear this site&rsquo;s storage.
         </li>
       </ul>
       <p>
@@ -59,8 +67,8 @@ export default function CookiePolicyPage() {
       <h2>Controlling storage</h2>
       <p>
         Every major browser lets you view and clear cookies and site storage, usually under privacy
-        settings. Clearing this site&rsquo;s storage has no effect beyond replaying the opening
-        sequence once.
+        settings. Clearing this site&rsquo;s storage replays the opening sequence once and
+        removes any steps you have ticked as completed.
       </p>
 
       <h2>If this changes</h2>

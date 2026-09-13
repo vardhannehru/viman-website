@@ -14,12 +14,21 @@ export function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [overFilm, setOverFilm] = useState(false);
   const pathname = usePathname();
   const { scrollY } = useScroll();
+
+  /* Dark while the bar floats over the WebGL film, light everywhere else. */
+  const checkFilm = () => {
+    const stage = document.getElementById("flight-stage");
+    setOverFilm(!!stage && stage.getBoundingClientRect().bottom > 72);
+  };
+  useEffect(checkFilm, [pathname]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
     setScrolled(latest > 24);
+    checkFilm();
     // Hide on the way down, reveal instantly on the way up — never in the way,
     // never more than one gesture from reach.
     if (open) return;
@@ -43,14 +52,14 @@ export function Navbar() {
         initial={{ y: -110, opacity: 0 }}
         animate={{ y: hidden ? -110 : 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: EASE, delay: hidden ? 0 : 0.1 }}
-        className="fixed inset-x-0 top-0 z-[100] pt-3 md:pt-5"
+        className={cn("fixed inset-x-0 top-0 z-[100] pt-3 md:pt-5", overFilm && "theme-dark")}
       >
         <nav
           aria-label="Primary"
           className={cn(
             "mx-auto flex items-center justify-between gap-6 rounded-full px-3 py-2.5 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:py-3",
             scrolled
-              ? "w-[calc(100%-1.5rem)] max-w-4xl glass-strong shadow-[0_20px_60px_-30px_rgba(0,0,0,0.9)]"
+              ? "w-[calc(100%-1.5rem)] max-w-4xl glass-strong shadow-[0_20px_60px_-30px_rgba(15,23,42,0.3)]"
               : "w-[calc(100%-2rem)] max-w-6xl border border-transparent bg-transparent",
           )}
         >

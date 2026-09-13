@@ -88,11 +88,25 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  // New route: reset to the top and re-measure every trigger.
+  // New route: reset to the top and re-measure every trigger, then honour a
+  // #hash the link carried (e.g. "/#step-03" from a step guide page).
   useEffect(() => {
     lenisInstance?.scrollTo(0, { immediate: true });
     window.scrollTo(0, 0);
-    const id = window.setTimeout(() => ScrollTrigger.refresh(), 220);
+    const id = window.setTimeout(() => {
+      ScrollTrigger.refresh();
+      const hash = window.location.hash;
+      const el = hash ? document.querySelector<HTMLElement>(hash) : null;
+      if (!el) return;
+      const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 20;
+      if (!lenisInstance) {
+        el.scrollIntoView({ block: "start" });
+        return;
+      }
+      // Lenis still holds the previous page's scroll limit until it re-measures.
+      lenisInstance.resize();
+      lenisInstance.scrollTo(el, { offset: -margin, immediate: true });
+    }, 220);
     return () => window.clearTimeout(id);
   }, [pathname]);
 

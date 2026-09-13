@@ -18,7 +18,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: ["bg-cloud text-void", "hover:bg-white"],
+        primary: ["bg-cloud text-void", "hover:bg-cloud/85"],
         glass: ["glass text-cloud", "hover:border-cloud/20 hover:bg-cloud/[0.09]"],
         ghost: ["text-cloud-dim hover:text-cloud", "hover:bg-cloud/[0.06]"],
         outline: [

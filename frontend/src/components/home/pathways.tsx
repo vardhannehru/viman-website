@@ -87,11 +87,11 @@ function PathwayCard({ pathway, delay }: { pathway: Pathway; delay: number }) {
         </div>
 
         <div className="mt-8 border-t border-cloud/8 pt-7">
-          <span className="mono-label text-[#ff9aa4]">Disadvantages</span>
+          <span className="mono-label text-[#c93545]">Disadvantages</span>
           <ul className="mt-5 space-y-4">
             {pathway.cons.map((con) => (
               <li key={con.title} className="flex gap-3.5">
-                <span className="mt-0.5 flex h-[1.125rem] w-[1.125rem] shrink-0 items-center justify-center rounded-full border border-[#ff9aa4]/25 bg-[#ff9aa4]/[0.08] text-[#ff9aa4]">
+                <span className="mt-0.5 flex h-[1.125rem] w-[1.125rem] shrink-0 items-center justify-center rounded-full border border-[#c93545]/25 bg-[#c93545]/[0.08] text-[#c93545]">
                   <Minus className="h-2.5 w-2.5" strokeWidth={3} />
                 </span>
                 <p className="text-[0.875rem] leading-relaxed text-mist">

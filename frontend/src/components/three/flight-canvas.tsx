@@ -74,7 +74,7 @@ export function FlightCanvas({ stageSelector = "#flight-stage" }: { stageSelecto
             flight.progress = self.progress * GROUND_ACT;
           },
         }),
-        // Act II — the flight, across the nine roadmap steps.
+        // Act II — the flight, across the eight roadmap steps.
         ScrollTrigger.create({
           trigger: roadmap,
           start: "top top",
