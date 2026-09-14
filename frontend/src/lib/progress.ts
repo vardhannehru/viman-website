@@ -36,6 +36,16 @@ export function useCompletedSteps(): string[] {
   return useMemo(() => parse(raw), [raw]);
 }
 
+/** Ticks (or clears) every step in one write, so listeners update once. */
+export function setAllStepsCompleted(ids: readonly string[], done: boolean) {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(done ? [...ids] : []));
+  } catch {
+    /* Storage blocked: the ticks still show for this visit. */
+  }
+  window.dispatchEvent(new Event(CHANGE));
+}
+
 export function setStepCompleted(id: string, done: boolean) {
   const steps = new Set(parse(snapshot()));
   if (done) steps.add(id);

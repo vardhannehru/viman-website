@@ -15,7 +15,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowUp, Check, TriangleAlert, X } from "lucide-react";
 import { roadmap, type RoadmapStep } from "@/lib/site";
-import { setStepCompleted, useCompletedSteps } from "@/lib/progress";
+import { setAllStepsCompleted, setStepCompleted, useCompletedSteps } from "@/lib/progress";
 import { scrollToSection } from "@/components/providers/smooth-scroll";
 
 function glideTo(selector: string) {
@@ -110,6 +110,18 @@ export function Roadmap() {
       window.setTimeout(() => glideTo(`#step-${next.index}`), 1100),
       window.setTimeout(() => setCelebrating(null), 2800),
     );
+  };
+
+  /* One tick for the whole checklist: ticking it completes every step and
+     glides to the congratulations; unticking it clears them all. */
+  const toggleAll = (checked: boolean) => {
+    clearTimers();
+    setCelebrating(null);
+    setAllStepsCompleted(
+      roadmap.map((step) => step.id),
+      checked,
+    );
+    if (checked) timers.current.push(window.setTimeout(() => glideTo("#roadmap-complete"), 150));
   };
 
   /* How many steps the reader has scrolled clean past: a step counts once its
@@ -209,6 +221,35 @@ export function Roadmap() {
           </ol>
         </div>
 
+        {/* One tick for the whole checklist. */}
+        <div className="mx-auto mt-16 max-w-xl rounded-3xl glass px-7 py-6">
+          <label className="flex cursor-pointer items-center gap-4">
+            <input
+              type="checkbox"
+              checked={allDone}
+              onChange={(e) => toggleAll(e.target.checked)}
+              className="peer sr-only"
+            />
+            <span
+              aria-hidden
+              className={cn(
+                "flex h-6 w-6 shrink-0 items-center justify-center rounded-md border transition-colors duration-300 peer-focus-visible:ring-2 peer-focus-visible:ring-cyan peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-void",
+                allDone ? "border-cyan bg-cyan text-void" : "border-cloud/30",
+              )}
+            >
+              {allDone && <Check className="h-4 w-4" strokeWidth={2.5} />}
+            </span>
+            <span>
+              <span className="block text-[1.0625rem] font-medium text-cloud">Check all steps</span>
+              <span className="mt-1 block text-[0.875rem] text-cloud-dim">
+                {allDone
+                  ? `All ${roadmap.length} steps are ticked.`
+                  : "Tick every step on the checklist at once."}
+              </span>
+            </span>
+          </label>
+        </div>
+
         {/* Every step ticked off. */}
         <motion.div
           id="roadmap-complete"
@@ -220,7 +261,7 @@ export function Roadmap() {
               : { opacity: 0, y: 24, filter: "blur(12px)" }
           }
           transition={{ duration: 1.1, ease: EASE }}
-          className="mx-auto mt-16 max-w-xl scroll-mt-48 rounded-3xl glass px-10 py-9 text-center"
+          className="mx-auto mt-8 max-w-xl scroll-mt-48 rounded-3xl glass px-10 py-9 text-center"
         >
           <p className="font-serif text-[2rem] italic leading-none text-gold md:text-[2.6rem]">
             {SUCCESS_MESSAGE.title}
