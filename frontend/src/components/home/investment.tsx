@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import { investment } from "@/lib/site";
 import { EASE, viewport } from "@/lib/motion";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -13,6 +14,13 @@ import { Reveal } from "@/components/motion/reveal";
  * derived arithmetic on the source's own figures — no new numbers.
  */
 export function Investment() {
+  /* The bars fill together once the list is on screen. Watching the list
+     rather than each bar means the lowest bar can never be left empty just
+     because it sits near the bottom edge when the reader stops scrolling. */
+  const list = useRef<HTMLUListElement>(null);
+  const shown = useInView(list, { once: true, amount: 0.3 });
+  const reduced = useReducedMotion();
+
   return (
     <section id="investment" className="relative z-10 section-pad">
       <div className="shell">
@@ -34,7 +42,7 @@ export function Investment() {
             </div>
 
             {/* Cost lines */}
-            <ul className="mt-10 space-y-8">
+            <ul ref={list} className="mt-10 space-y-8">
               {investment.rows.map((row, i) => (
                 <li key={row.label}>
                   <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
@@ -45,14 +53,14 @@ export function Investment() {
                       {row.value}
                     </span>
                   </div>
-                  <div className="mt-3.5 h-1.5 overflow-hidden rounded-full bg-cloud/6">
+                  <div className="mt-3.5 h-2.5 overflow-hidden rounded-full bg-cloud/10">
                     <motion.div
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: row.weight }}
-                      viewport={viewport}
-                      transition={{ duration: 1.5, ease: EASE, delay: 0.15 + i * 0.12 }}
-                      style={{ transformOrigin: "left" }}
-                      className="h-full w-full rounded-full bg-gradient-to-r from-cyan to-sky"
+                      initial={false}
+                      animate={{ width: shown ? `${Math.max(row.weight * 100, 2)}%` : "0%" }}
+                      transition={
+                        reduced ? { duration: 0 } : { duration: 1.5, ease: EASE, delay: 0.15 + i * 0.12 }
+                      }
+                      className="h-full rounded-full bg-gradient-to-r from-cyan to-sky"
                     />
                   </div>
                 </li>
