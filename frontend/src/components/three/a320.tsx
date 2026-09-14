@@ -443,7 +443,13 @@ export const A320 = forwardRef<A320Handle, { quality?: "high" | "low" }>(functio
   { quality = "high" },
   ref,
 ) {
-  const { scene } = useGLTF(MODEL_URL);
+  /* useGLTF hands every mount the same cached scene, and the rig below
+     rewrites its materials and hinges in place. Rigging a fresh clone each
+     mount keeps the cached original untouched, so coming back to the page
+     can't find it already re-materialled (and fall back to plain paint).
+     The clone shares geometry, so it costs almost nothing. */
+  const { scene: cached } = useGLTF(MODEL_URL);
+  const scene = useMemo(() => cached.clone(true), [cached]);
   const root = useRef<THREE.Group>(null!);
   const finishes = useMemo(() => buildFinishes(), []);
 
