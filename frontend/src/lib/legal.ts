@@ -15,7 +15,7 @@ export const legalPlaceholders = {
   address: companyAddress,
   privacyEmail: contact.email,
   contactEmail: contact.email,
-  jurisdiction: "[Jurisdiction]",
+  jurisdiction: "India",
 } as const;
 
 /** Single source for the "Last updated" stamp shown on every legal page. */
