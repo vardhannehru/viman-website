@@ -13,16 +13,16 @@ export default function PrivacyPolicyPage() {
   return (
     <LegalShell title={page.title} summary={page.summary} current={page.slug}>
       <p>
-        This policy explains what {P.entity} (&ldquo;VIMAN&rdquo;,
-        &ldquo;we&rdquo;) does with information collected through this website. It covers the
+        This policy explains what {P.entity} (&ldquo;we&rdquo;) does with information collected
+        through this website. It covers the
         website only. It does not cover the DGCA portals, airline career pages or flying school
-        sites that VIMAN links to — those are operated by other organisations under their own
+        sites that VimanOne links to — those are operated by other organisations under their own
         policies.
       </p>
 
       <h2>What we collect</h2>
       <p>
-        VIMAN is a published guide. There is no account, no login and no form on this site, so we
+        VimanOne is a published guide. There is no account, no login and no form on this site, so we
         do not ask you for your name, your contact details or any document.
       </p>
       <p>Two categories of information are handled:</p>

@@ -2,18 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Pill } from "@/components/ui/pill";
 
 export const metadata: Metadata = {
   title: "Page not found",
-  description: "This page doesn't exist. Head back to the VIMAN checklist.",
+  description: "This page doesn't exist. Head back to the VimanOne checklist.",
 };
 
 export default function NotFound() {
   return (
     <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-6">
       <div className="relative text-center">
-        <Pill tone="neutral">Off the flight plan</Pill>
+        <p className="text-[0.9375rem] font-medium text-mist">Off the flight plan</p>
 
         <h1 className="mt-8 text-title text-cloud">404</h1>
 

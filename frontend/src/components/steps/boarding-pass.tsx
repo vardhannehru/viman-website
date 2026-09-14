@@ -15,7 +15,7 @@ type Promo = NonNullable<StepGuide["promo"]>;
 const PAGE = "#f5f7fb";
 
 /**
- * A boarding pass for a VIMAN offer. Scrolling it up the screen tears the
+ * A boarding pass for a VimanOne offer. Scrolling it up the screen tears the
  * stub off along the perforation; scrolling back down joins it again.
  */
 export function BoardingPass({ promo, stepLabel }: { promo: Promo; stepLabel: string }) {
@@ -35,7 +35,7 @@ export function BoardingPass({ promo, stepLabel }: { promo: Promo; stepLabel: st
   return (
     <section
       ref={ref}
-      aria-label="VIMAN professional guidance"
+      aria-label="VimanOne professional guidance"
       /* The bottom padding is the room the torn stub drops into, so it never
          lands on whatever follows the pass. */
       className={`relative mt-6 pb-10 ${promo.turbulence ? "animate-chop" : ""}`}
@@ -97,7 +97,7 @@ export function BoardingPass({ promo, stepLabel }: { promo: Promo; stepLabel: st
           </div>
           <div>
             <dt className="text-[0.75rem] text-[#7a6d55]">Operated by</dt>
-            <dd className="mt-1 text-[0.9375rem] font-medium text-[#13235b]">VIMAN</dd>
+            <dd className="mt-1 text-[0.9375rem] font-medium text-[#13235b]">VimanOne</dd>
           </div>
         </dl>
 
@@ -105,11 +105,11 @@ export function BoardingPass({ promo, stepLabel }: { promo: Promo; stepLabel: st
           <p className="text-[1.125rem] font-semibold leading-snug text-[#13235b]">{promo.action}</p>
           <div className="mt-4 flex flex-wrap gap-3">
             <a
-              href={`mailto:${contact.email}?subject=${encodeURIComponent(`VIMAN guidance — Step ${stepLabel}`)}`}
+              href={`mailto:${contact.email}?subject=${encodeURIComponent(`VimanOne guidance — Step ${stepLabel}`)}`}
               className="inline-flex h-11 items-center gap-2 rounded-full bg-[#13235b] px-5 text-[0.9375rem] font-medium text-white transition-colors duration-300 hover:bg-[#1d3380]"
             >
               <Mail className="h-4 w-4" />
-              Email VIMAN
+              Email VimanOne
             </a>
             <a
               href={contact.phoneHref}

@@ -20,13 +20,13 @@ import {
  * ========================================================================== */
 
 export const site = {
-  name: "VIMAN",
-  /* Page 2 of the source, verbatim. */
-  tagline: "one app",
-  headline: "Zero to Cockpit",
+  name: "VimanOne",
+  tagline: "Zero to Cockpit",
+  /** One line on what VimanOne is, shown under the hero headline. */
+  summary: "Your step-by-step guide to becoming a commercial pilot in India.",
   description:
-    "VIMAN — one app, Zero to Cockpit. The DGCA pilot pathway: prerequisites, roadmap, step-by-step licence route, timeline and investment, and cadet versus traditional pathways.",
-  url: "https://viman.aero",
+    "VimanOne — Zero to Cockpit. A step-by-step guide to becoming a commercial pilot in India: the DGCA pilot pathway checklist, a detailed guide to every step, timeline and approximate investment, cadet versus traditional routes, and professional guidance.",
+  url: "https://viman1.com",
   locale: "en_IN",
 } as const;
 
@@ -68,6 +68,7 @@ export const navItems: NavItem[] = [
   { label: "Checklist", href: "/#roadmap" },
   { label: "Timeline", href: "/#investment" },
   { label: "Cadet vs Traditional", href: "/#compare" },
+  { label: "About", href: "/about" },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -480,7 +481,7 @@ export const stepGuides: StepGuide[] = [
     stepId: "prerequisites",
     caption: "Eligibility before you begin",
     summary:
-      "The age and education requirements to start the DGCA pilot pathway — step 01 of the VIMAN roadmap.",
+      "The age and education requirements to start the DGCA pilot pathway — step 01 of the VimanOne roadmap.",
     intro:
       "Before any portal, medical or flight, check that you are eligible. The pathway sets two requirements — your age and your education — and offers a route for students who did not study science in 10+2.",
     facts: [
@@ -521,7 +522,7 @@ export const stepGuides: StepGuide[] = [
   {
     stepId: "egca",
     summary:
-      "How to set up your eGCA profile and get your DGCA Computer Number — step 02 of the VIMAN roadmap, with links to the official DGCA portals.",
+      "How to set up your eGCA profile and get your DGCA Computer Number — step 02 of the VimanOne roadmap, with links to the official DGCA portals.",
     intro:
       "Before you can sit a single DGCA theory paper, two things have to be set up on the regulator's official portals: an eGCA profile and a DGCA Computer Number. It is paperwork rather than flying, but the theory examinations in step 04 cannot be booked without it — so it comes early.",
     facts: [
@@ -573,21 +574,21 @@ export const stepGuides: StepGuide[] = [
       body: "Most of the time, DGCA Computer Number applications get rejected. Check every detail carefully before you submit.",
     },
     promo: {
-      eyebrow: "Professional guidance from VIMAN",
+      eyebrow: "Professional guidance from VimanOne",
       title: "Don't let your Computer Number application get rejected.",
-      body: "VIMAN offers professional guidance and help with this step — from setting up your eGCA profile to applying for your DGCA Computer Number.",
+      body: "VimanOne offers professional guidance and help with this step — from setting up your eGCA profile to applying for your DGCA Computer Number.",
       points: [
         "Professional guidance, one step at a time",
         "Help setting up your eGCA profile",
         "Help with your DGCA Computer Number application",
       ],
-      action: "Contact VIMAN to get started.",
+      action: "Contact VimanOne to get started.",
     },
   },
   {
     stepId: "medical",
     summary:
-      "How aviation medicals work, and what Class 2 and Class 1 mean — step 03 of the VIMAN roadmap.",
+      "How aviation medicals work, and what Class 2 and Class 1 mean — step 03 of the VimanOne roadmap.",
     intro:
       "Before you can fly as a pilot, a doctor has to confirm that you are fit to. In India, aviation medicals follow DGCA standards and are carried out only by examiners the DGCA has approved. There are two you need to know: Class 2, which you get first, and Class 1, which a commercial pilot must hold.",
     facts: [
@@ -639,25 +640,25 @@ export const stepGuides: StepGuide[] = [
     completePrompt: "Tick this once your Class 2 medical has been cleared and approved.",
     warning: {
       title: "Please note",
-      body: "VIMAN does not carry out medical examinations or decide medical fitness. Only DGCA-approved examiners and the DGCA can do that.",
+      body: "VimanOne does not carry out medical examinations or decide medical fitness. Only DGCA-approved examiners and the DGCA can do that.",
     },
     promo: {
-      eyebrow: "Professional guidance from VIMAN",
+      eyebrow: "Professional guidance from VimanOne",
       title: "Know what to expect before your medical.",
-      body: "VIMAN guides you through the medical process — which medical to book first, how Class 2 and Class 1 fit into your journey, and what to have ready for each.",
+      body: "VimanOne guides you through the medical process — which medical to book first, how Class 2 and Class 1 fit into your journey, and what to have ready for each.",
       points: [
         "Which medical to book, and when",
         "What to prepare before your appointment",
         "Help understanding each stage of the process",
       ],
-      action: "Contact VIMAN to get started.",
+      action: "Contact VimanOne to get started.",
       service: "Medical process guidance",
     },
   },
   {
     stepId: "ground-school",
     summary:
-      "What DGCA ground school covers, the five theory papers, and how to book them — step 04 of the VIMAN roadmap.",
+      "What DGCA ground school covers, the five theory papers, and how to book them — step 04 of the VimanOne roadmap.",
     intro:
       "Ground school is the classroom side of becoming a pilot. You enrol in ground classes or study on your own, then clear the five core DGCA theoretical papers. Every paper needs 70% to pass.",
     facts: [
@@ -711,22 +712,22 @@ export const stepGuides: StepGuide[] = [
       body: "No coaching or guidance can guarantee a pass. DGCA examinations are passed on your own preparation and your performance on the day.",
     },
     promo: {
-      eyebrow: "Professional guidance from VIMAN",
+      eyebrow: "Professional guidance from VimanOne",
       title: "Prepare for your DGCA exams with a plan.",
-      body: "VIMAN helps you prepare for your DGCA ground examinations — planning your study across the five papers, and registering and scheduling your exams.",
+      body: "VimanOne helps you prepare for your DGCA ground examinations — planning your study across the five papers, and registering and scheduling your exams.",
       points: [
         "A study plan across all five papers",
         "Guidance on registering and scheduling your exams",
         "Support through your preparation",
       ],
-      action: "Contact VIMAN to get started.",
+      action: "Contact VimanOne to get started.",
       service: "DGCA exam preparation guidance",
     },
   },
   {
     stepId: "rtr",
     summary:
-      "The RTR(A) radio telephony licence from the WPC wing — step 05 of the VIMAN roadmap.",
+      "The RTR(A) radio telephony licence from the WPC wing — step 05 of the VimanOne roadmap.",
     intro:
       "Operating aeronautical radio equipment needs a licence of its own: the Radio Telephone Operator's Restricted (Aeronautical) licence, or RTR(A).",
     facts: [
@@ -770,7 +771,7 @@ export const stepGuides: StepGuide[] = [
   {
     stepId: "flight-training",
     summary:
-      "The 200 flying hours required for a CPL and how they break down — step 06 of the VIMAN roadmap.",
+      "The 200 flying hours required for a CPL and how they break down — step 06 of the VimanOne roadmap.",
     intro:
       "Flight training is the most crucial part of the journey. It is where you actually learn to fly, and it takes the largest share of your time and money. You enrol in a DGCA-approved Flying Training Organisation (FTO), in India or abroad, and log the 200 hours of flight time the licence requires.",
     facts: [
@@ -824,22 +825,22 @@ export const stepGuides: StepGuide[] = [
     links: [{ ...official.dgca, use: "The regulator's official website." }],
     completePrompt: "Tick this once you have logged all 200 hours.",
     promo: {
-      eyebrow: "Professional guidance from VIMAN",
+      eyebrow: "Professional guidance from VimanOne",
       title: "Choose the right flying school.",
-      body: "Your flying school is the biggest decision — and the biggest cost — on the pathway. VIMAN guides you in choosing a suitable DGCA-approved flight school for your goals and budget.",
+      body: "Your flying school is the biggest decision — and the biggest cost — on the pathway. VimanOne guides you in choosing a suitable DGCA-approved flight school for your goals and budget.",
       points: [
         "Shortlisting DGCA-approved flight schools",
         "Comparing training in India and abroad",
         "Planning for time, cost and delays",
       ],
-      action: "Contact VIMAN to get started.",
+      action: "Contact VimanOne to get started.",
       service: "Flight school guidance",
       turbulence: true,
     },
   },
   {
     stepId: "cpl",
-    summary: "CPL skill tests and licence issuance on eGCA — step 07 of the VIMAN roadmap.",
+    summary: "CPL skill tests and licence issuance on eGCA — step 07 of the VimanOne roadmap.",
     intro:
       "With your hours flown, you prove your flying to an examiner and then apply for the licence itself.",
     facts: [
@@ -873,7 +874,7 @@ export const stepGuides: StepGuide[] = [
   {
     stepId: "type-rating",
     summary:
-      "Type rating on the A320 or B737 family and airline selection — step 08 of the VIMAN roadmap.",
+      "Type rating on the A320 or B737 family and airline selection — step 08 of the VimanOne roadmap.",
     intro:
       "The CPL makes you a commercial pilot. This last step trains you on a specific airliner and takes you through an airline's selection to a Junior First Officer seat.",
     facts: [
@@ -922,3 +923,42 @@ export const guideSlugs = () => stepGuides.map((guide) => stepSlugs[guide.stepId
 
 export const guideBySlug = (slug: string) =>
   stepGuides.find((guide) => stepSlugs[guide.stepId] === slug);
+
+/* -------------------------------------------------------------------------- */
+/*  ABOUT US — /about. Only what the site already says or offers; no invented */
+/*  history, people or numbers.                                               */
+/* -------------------------------------------------------------------------- */
+
+export const about: { summary: string; intro: string; sections: GuideSection[] } = {
+  summary:
+    "VimanOne — Zero to Cockpit. A step-by-step guide to becoming a commercial pilot in India, and professional guidance at every step.",
+  intro:
+    "VimanOne takes you from zero to the cockpit. We lay out the whole route to becoming a commercial pilot in India — from checking that you are eligible to your first airline seat — in the order you meet it, and we offer professional guidance whenever you want a hand.",
+  sections: [
+    {
+      heading: "What VimanOne is",
+      body: [
+        "A step-by-step guide to the DGCA pilot pathway: an eight-step checklist you can tick off as you go, a detailed page for every step, and links to the official portals you will actually use.",
+        "It also sets out the typical timeline and approximate investment, and compares the cadet and traditional routes, so you can plan the whole journey before you commit to it.",
+      ],
+    },
+    {
+      heading: "What we help with",
+      body: [
+        "Alongside the guide, VimanOne offers professional guidance and help with the stages students most often get stuck on:",
+      ],
+      points: [
+        "Setting up your eGCA profile and applying for your DGCA Computer Number",
+        "Understanding the medical process — Class 2 and Class 1",
+        "Preparing for your DGCA ground examinations",
+        "Choosing a suitable DGCA-approved flight school",
+      ],
+    },
+    {
+      heading: "What we are not",
+      body: [
+        "VimanOne is independent. We are not the DGCA, an examiner, a medical assessor, a flying school or an airline, and no one can guarantee a medical, an exam result or a job. What we can do is help you prepare for each one.",
+      ],
+    },
+  ],
+};

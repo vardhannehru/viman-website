@@ -226,7 +226,7 @@ export default async function StepGuidePage({ params }: Props) {
             </ul>
             {hasExternal && (
               <p className="mt-6 text-[0.8125rem] leading-relaxed text-mist-deep">
-                Links open the official sites in a new tab. VIMAN is not affiliated with any
+                Links open the official sites in a new tab. VimanOne is not affiliated with any
                 authority named here.
               </p>
             )}

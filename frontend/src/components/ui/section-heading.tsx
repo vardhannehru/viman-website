@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Pill } from "./pill";
 import { Reveal } from "@/components/motion/reveal";
 import { TextReveal } from "@/components/motion/text-reveal";
 
@@ -20,7 +19,6 @@ export function SectionHeading({
   serif = false,
   lede,
   align = "left",
-  tone = "cyan",
   className,
 }: {
   eyebrow?: string;
@@ -43,7 +41,7 @@ export function SectionHeading({
     >
       {eyebrow && (
         <Reveal direction="none" blur={6}>
-          <Pill tone={tone}>{eyebrow}</Pill>
+          <p className="text-[0.9375rem] font-medium text-mist">{eyebrow}</p>
         </Reveal>
       )}
 

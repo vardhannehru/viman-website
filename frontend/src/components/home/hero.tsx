@@ -6,10 +6,10 @@ import { MoveDown } from "lucide-react";
 import { EASE } from "@/lib/motion";
 import { site } from "@/lib/site";
 import { scrollToSection } from "@/components/providers/smooth-scroll";
-import { Pill } from "@/components/ui/pill";
+import { LogoMark } from "@/components/layout/logo";
 
 /**
- * The brand screen: "one app / Zero to Cockpit", verbatim from the source.
+ * The brand screen: "VimanOne / Zero to Cockpit", and one line on what it is.
  * No claims, no statistics, no supporting copy beyond what the source carries.
  */
 export function Hero() {
@@ -61,10 +61,20 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: EASE, delay: 0.15 }}
         >
-          <Pill className="bg-void/70 backdrop-blur-md">{site.tagline}</Pill>
+          {/* The brand line: the logo's own delta, then the name set in the
+              logo's light weight with "One" in the delta's blue. */}
+          <p className="flex items-center gap-3 text-[clamp(1.75rem,3.4vw,2.6rem)] font-light leading-none tracking-[0.03em] text-cloud">
+            <LogoMark className="h-[0.92em] w-[0.92em] shrink-0" />
+            <span>
+              Viman
+              <span className="bg-gradient-to-r from-[#7C93FF] to-[#5271F5] bg-clip-text font-normal text-transparent">
+                One
+              </span>
+            </span>
+          </p>
         </motion.div>
 
-        <h1 className="mt-8 max-w-5xl text-display">
+        <h1 className="mt-4 max-w-5xl text-display">
           <span className="block overflow-hidden">
             <motion.span
               className="block text-gradient"
@@ -95,7 +105,7 @@ export function Hero() {
           transition={{ duration: 1, ease: EASE, delay: 0.62 }}
           className="mt-11 max-w-md text-lead text-cloud-dim"
         >
-          It is still dark on the ramp. Scroll, and the morning starts.
+          {site.summary} It is still dark on the ramp — scroll, and the morning starts.
         </motion.p>
       </motion.div>
 

@@ -3,7 +3,7 @@ import { company, companyAddress, contact } from "./site";
 /* --------------------------------------------------------------------------
  *  LEGAL
  *
- *  Legal name, address and contact emails are VIMAN's real details. The
+ *  Legal name, address and contact emails are VimanOne's real details. The
  *  jurisdiction is still a bracketed placeholder and must be replaced before
  *  the site goes to production. Nothing in the copy claims compliance with a
  *  named regime (GDPR, DPDP, ISO, SOC 2) because none of that has been
@@ -35,7 +35,7 @@ export const legalPages: LegalPage[] = [
     href: "/privacy-policy",
     title: "Privacy Policy",
     summary:
-      "What VIMAN collects when you use this site, why it is collected, and how to have it removed.",
+      "What VimanOne collects when you use this site, why it is collected, and how to have it removed.",
   },
   {
     slug: "terms-and-conditions",
@@ -54,6 +54,6 @@ export const legalPages: LegalPage[] = [
     href: "/disclaimer",
     title: "Disclaimer",
     summary:
-      "VIMAN publishes guidance on the DGCA pilot pathway. It is not a regulator, an examiner or a flying school.",
+      "VimanOne publishes guidance on the DGCA pilot pathway. It is not a regulator, an examiner or a flying school.",
   },
 ];

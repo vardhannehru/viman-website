@@ -14,8 +14,10 @@ export function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [overFilm, setOverFilm] = useState(false);
   const pathname = usePathname();
+  /* The home page opens over the film, so start dark there; the scroll
+     check below takes over once the page is interactive. */
+  const [overFilm, setOverFilm] = useState(pathname === "/");
   const { scrollY } = useScroll();
 
   /* Dark while the bar floats over the WebGL film, light everywhere else. */

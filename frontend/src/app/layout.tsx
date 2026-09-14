@@ -33,7 +33,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.tagline}, ${site.headline}`,
+    default: `${site.name} — ${site.tagline}`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -53,12 +53,12 @@ export const metadata: Metadata = {
     locale: site.locale,
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.tagline}, ${site.headline}`,
+    title: `${site.name} — ${site.tagline}`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.tagline}, ${site.headline}`,
+    title: `${site.name} — ${site.tagline}`,
     description: site.description,
   },
   robots: {
@@ -83,7 +83,7 @@ const jsonLd = {
   name: site.name,
   url: site.url,
   description: site.description,
-  slogan: `${site.tagline}, ${site.headline}`,
+  slogan: `${site.name} — ${site.tagline}`,
   areaServed: "IN",
   email: contact.email,
   telephone: contact.phoneHref.replace("tel:", ""),

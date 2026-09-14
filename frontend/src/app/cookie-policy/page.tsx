@@ -60,7 +60,7 @@ export default function CookiePolicyPage() {
       <h2>Third parties</h2>
       <p>
         Fonts and site assets are served as part of the site itself. When you follow a link away
-        from VIMAN — to a DGCA portal, a flying school or an airline careers page — that site may
+        from VimanOne — to a DGCA portal, a flying school or an airline careers page — that site may
         set its own cookies under its own policy, which we do not control.
       </p>
 
@@ -73,7 +73,7 @@ export default function CookiePolicyPage() {
 
       <h2>If this changes</h2>
       <p>
-        If VIMAN later introduces analytics or any cookie that is not strictly necessary, this page
+        If VimanOne later introduces analytics or any cookie that is not strictly necessary, this page
         will be updated first and consent will be requested before anything is set.
       </p>
 

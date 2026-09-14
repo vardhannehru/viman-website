@@ -13,13 +13,13 @@ export default function DisclaimerPage() {
   return (
     <LegalShell title={page.title} summary={page.summary} current={page.slug}>
       <p>
-        VIMAN explains how someone in India gets from school to an airline flight deck. It is
+        VimanOne explains how someone in India gets from school to an airline flight deck. It is
         published by {P.entity} as reference material. Read
         this page before you rely on anything here.
       </p>
 
-      <h2>What VIMAN is not</h2>
-      <p>VIMAN is not, and does not act on behalf of:</p>
+      <h2>What VimanOne is not</h2>
+      <p>VimanOne is not, and does not act on behalf of:</p>
       <ul>
         <li>the Directorate General of Civil Aviation or any other civil aviation authority;</li>
         <li>a Flying Training Organisation or Approved Training Organisation;</li>
@@ -30,7 +30,7 @@ export default function DisclaimerPage() {
       <p>
         Where an airline, academy or portal is named on this site, it is named because it is part of
         the pathway a candidate has to navigate. Naming it is description, not affiliation,
-        endorsement or partnership, and no relationship with VIMAN is implied.
+        endorsement or partnership, and no relationship with VimanOne is implied.
       </p>
 
       <h2>Not professional advice</h2>

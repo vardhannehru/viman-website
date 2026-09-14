@@ -30,7 +30,7 @@ export function LegalShell({
           className="group inline-flex items-center gap-2 text-[0.875rem] text-mist transition-colors duration-300 hover:text-cloud"
         >
           <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-1" />
-          Back to VIMAN
+          Back to VimanOne
         </Link>
 
         <div className="mt-12 grid gap-16 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-20">

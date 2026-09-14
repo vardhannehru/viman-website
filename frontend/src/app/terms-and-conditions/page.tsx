@@ -14,18 +14,18 @@ export default function TermsPage() {
     <LegalShell title={page.title} summary={page.summary} current={page.slug}>
       <p>
         These terms govern your use of this website, operated by{" "}
-        {P.entity} (&ldquo;VIMAN&rdquo;, &ldquo;we&rdquo;). By
+        {P.entity} (&ldquo;we&rdquo;). By
         using the site you accept them. If you do not, please stop using the site.
       </p>
 
       <h2>What this site is</h2>
       <p>
-        VIMAN publishes an explanation of the route to an Indian commercial pilot licence: the
+        VimanOne publishes an explanation of the route to an Indian commercial pilot licence: the
         prerequisites, the examinations, the medicals, the flying hours and the airline entry
         points. It is reference material.
       </p>
       <p>
-        VIMAN is not a regulator, an examiner, a medical assessor, a flying training organisation or
+        VimanOne is not a regulator, an examiner, a medical assessor, a flying training organisation or
         a recruitment agency. Nothing here is an offer of training, employment, admission or
         finance. See the <a href="/disclaimer">Disclaimer</a>.
       </p>
@@ -51,7 +51,7 @@ export default function TermsPage() {
           by automated means at a scale that degrades it for others.
         </li>
         <li>
-          Do not present VIMAN&rsquo;s material as your own, or as endorsed by a regulator or an
+          Do not present VimanOne&rsquo;s material as your own, or as endorsed by a regulator or an
           airline.
         </li>
       </ul>
@@ -66,14 +66,14 @@ export default function TermsPage() {
 
       <h2>Intellectual property</h2>
       <p>
-        The VIMAN name, mark, design, written material and code on this site belong to{" "}
+        The VimanOne name, mark, design, written material and code on this site belong to{" "}
         {P.entity} or are used with permission. Regulatory
         terminology, examination names and organisation names belong to their respective owners and
         are used descriptively.
       </p>
       <p>
         You may read, quote briefly with attribution, and share links to this site. You may not
-        reproduce it wholesale or use the VIMAN mark without written permission.
+        reproduce it wholesale or use the VimanOne mark without written permission.
       </p>
 
       <h2>Liability</h2>

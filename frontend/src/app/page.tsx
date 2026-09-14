@@ -16,6 +16,11 @@ import { Pathways } from "@/components/home/pathways";
 export default function HomePage() {
   return (
     <>
+      {/* Night sky behind the film. Server-rendered, so the light copy over
+          the film is readable before WebGL has started (or if it never does);
+          the canvas paints over it once it runs. */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0 bg-[#04070e]" />
+
       {/* Persistent 3D stage, fixed behind the document at z-0. */}
       <FlightCanvasClient />
 
