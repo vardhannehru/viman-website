@@ -2,8 +2,9 @@
 
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
-import { ArrowRight, Check } from "lucide-react";
-import type { StepGuide } from "@/lib/site";
+import { Check, Mail, Phone } from "lucide-react";
+import { contact, type StepGuide } from "@/lib/site";
+import { InstagramIcon } from "@/components/ui/instagram-icon";
 import { Wordmark } from "@/components/layout/logo";
 
 type Promo = NonNullable<StepGuide["promo"]>;
@@ -100,10 +101,35 @@ export function BoardingPass({ promo, stepLabel }: { promo: Promo; stepLabel: st
           </div>
         </dl>
 
-        <p className="flex items-center gap-2 text-[1.125rem] font-semibold leading-snug text-[#13235b]">
-          {promo.action}
-          <ArrowRight className="h-5 w-5 shrink-0" />
-        </p>
+        <div>
+          <p className="text-[1.125rem] font-semibold leading-snug text-[#13235b]">{promo.action}</p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <a
+              href={`mailto:${contact.email}?subject=${encodeURIComponent(`VIMAN guidance — Step ${stepLabel}`)}`}
+              className="inline-flex h-11 items-center gap-2 rounded-full bg-[#13235b] px-5 text-[0.9375rem] font-medium text-white transition-colors duration-300 hover:bg-[#1d3380]"
+            >
+              <Mail className="h-4 w-4" />
+              Email VIMAN
+            </a>
+            <a
+              href={contact.phoneHref}
+              className="inline-flex h-11 items-center gap-2 rounded-full border border-[#13235b]/25 px-5 text-[0.9375rem] font-medium text-[#13235b] transition-colors duration-300 hover:border-[#13235b]/60"
+            >
+              <Phone className="h-4 w-4" />
+              {contact.phone}
+            </a>
+            <a
+              href={contact.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-11 items-center gap-2 rounded-full border border-[#13235b]/25 px-5 text-[0.9375rem] font-medium text-[#13235b] transition-colors duration-300 hover:border-[#13235b]/60"
+            >
+              <InstagramIcon className="h-4 w-4" />
+              <span className="sr-only">Instagram </span>
+              {contact.instagramHandle}
+            </a>
+          </div>
+        </div>
       </motion.div>
     </section>
   );

@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
   return (
     <LegalShell title={page.title} summary={page.summary} current={page.slug}>
       <p>
-        This policy explains what <span className="placeholder">{P.entity}</span> (&ldquo;VIMAN&rdquo;,
+        This policy explains what {P.entity} (&ldquo;VIMAN&rdquo;,
         &ldquo;we&rdquo;) does with information collected through this website. It covers the
         website only. It does not cover the DGCA portals, airline career pages or flying school
         sites that VIMAN links to — those are operated by other organisations under their own
@@ -64,7 +64,7 @@ export default function PrivacyPolicyPage() {
       <p>
         Server logs are retained for a limited operational period and then discarded. Correspondence
         is kept for as long as the matter is open. Where a specific retention period applies, it is
-        set out at <span className="placeholder">{P.privacyEmail}</span> on request.
+        set out at <a href={`mailto:${P.privacyEmail}`}>{P.privacyEmail}</a> on request.
       </p>
 
       <h2>Your choices</h2>
@@ -72,7 +72,7 @@ export default function PrivacyPolicyPage() {
         <li>You can clear the site&rsquo;s local storage at any time from your browser settings.</li>
         <li>
           You can ask what we hold about you, ask for it to be corrected, or ask for it to be
-          deleted, by writing to <span className="placeholder">{P.privacyEmail}</span>.
+          deleted, by writing to <a href={`mailto:${P.privacyEmail}`}>{P.privacyEmail}</a>.
         </li>
         <li>
           You can ask us to stop processing your information where we have no overriding reason to
@@ -88,7 +88,7 @@ export default function PrivacyPolicyPage() {
       <p>
         The pathway described on this site begins at seventeen. The site is not directed at children
         and we do not knowingly collect information from them. If you believe a child has sent us
-        personal information, write to <span className="placeholder">{P.privacyEmail}</span> and we
+        personal information, write to <a href={`mailto:${P.privacyEmail}`}>{P.privacyEmail}</a> and we
         will remove it.
       </p>
 
@@ -106,9 +106,9 @@ export default function PrivacyPolicyPage() {
 
       <h2>Contact</h2>
       <p>
-        Privacy questions: <span className="placeholder">{P.privacyEmail}</span>
+        Privacy questions: <a href={`mailto:${P.privacyEmail}`}>{P.privacyEmail}</a>
         <br />
-        Postal address: <span className="placeholder">{P.address}</span>
+        Postal address: {P.address}
       </p>
     </LegalShell>
   );

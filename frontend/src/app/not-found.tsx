@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Pill } from "@/components/ui/pill";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+  description: "This page doesn't exist. Head back to the VIMAN checklist.",
+};
 
 export default function NotFound() {
   return (
@@ -23,7 +29,7 @@ export default function NotFound() {
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <Link href="/#roadmap">See the roadmap</Link>
+            <Link href="/#roadmap">See the checklist</Link>
           </Button>
         </div>
       </div>

@@ -1,8 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  Award,
   BookOpen,
-  BrainCircuit,
   FileCheck2,
   GraduationCap,
   HeartPulse,
@@ -32,6 +30,31 @@ export const site = {
   locale: "en_IN",
 } as const;
 
+/* How students reach VIMAN. Used by the footer, every boarding pass, the
+   legal pages and the search-engine profile. */
+export const contact = {
+  email: "onevimana@gmail.com",
+  phone: "+91 81216 71606",
+  phoneHref: "tel:+918121671606",
+  instagram: "https://www.instagram.com/viman.one/",
+  instagramHandle: "@viman.one",
+} as const;
+
+/* The business behind VIMAN, as it appears on the legal pages and in the
+   search-engine profile. */
+export const company = {
+  legalName: "VimanOne",
+  address: {
+    street: "Avenue 1, Guttala Begumpet, Kavuri Hills, Jubilee Hills",
+    city: "Hyderabad",
+    region: "Telangana",
+    postalCode: "500081",
+    country: "IN",
+  },
+} as const;
+
+export const companyAddress = `${company.address.street}, ${company.address.city}, ${company.address.region} ${company.address.postalCode}`;
+
 /* -------------------------------------------------------------------------- */
 /*  NAVIGATION                                                                */
 /*  The source is a mobile app flow with no navigation bar. These labels are  */
@@ -45,29 +68,6 @@ export const navItems: NavItem[] = [
   { label: "Checklist", href: "/#roadmap" },
   { label: "Timeline", href: "/#investment" },
   { label: "Cadet vs Traditional", href: "/#compare" },
-];
-
-/* -------------------------------------------------------------------------- */
-/*  STAGES — "Which stage are you in?"                                        */
-/*                                                                            */
-/*  Static. The source names four stages and attaches a status phrase to      */
-/*  three of them. It provides no per-stage content, so these are display     */
-/*  only — not selectable, not linked.                                        */
-/* -------------------------------------------------------------------------- */
-
-export type Stage = {
-  id: string;
-  label: string;
-  /** Present in the source for three of the four stages only. */
-  status?: string;
-  icon: LucideIcon;
-};
-
-export const stages: Stage[] = [
-  { id: "thinking", label: "Thinking to become a pilot", icon: BrainCircuit },
-  { id: "ground", label: "Ground school", status: "Ready to taxi", icon: BookOpen },
-  { id: "flight", label: "Flight school", status: "on the runway", icon: PlaneTakeoff },
-  { id: "cpl", label: "Cpl", status: "Ready to take off", icon: Award },
 ];
 
 /* -------------------------------------------------------------------------- */

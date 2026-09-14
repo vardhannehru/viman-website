@@ -14,7 +14,7 @@ export default function DisclaimerPage() {
     <LegalShell title={page.title} summary={page.summary} current={page.slug}>
       <p>
         VIMAN explains how someone in India gets from school to an airline flight deck. It is
-        published by <span className="placeholder">{P.entity}</span> as reference material. Read
+        published by {P.entity} as reference material. Read
         this page before you rely on anything here.
       </p>
 
@@ -70,7 +70,7 @@ export default function DisclaimerPage() {
 
       <h2>Limitation</h2>
       <p>
-        To the extent the law allows, <span className="placeholder">{P.entity}</span> accepts no
+        To the extent the law allows, {P.entity} accepts no
         liability for loss or expense arising from reliance on this site. Your use of the site is
         also subject to our <a href="/terms-and-conditions">Terms &amp; Conditions</a>.
       </p>
@@ -78,7 +78,7 @@ export default function DisclaimerPage() {
       <h2>Corrections</h2>
       <p>
         If something on this site is wrong or out of date, tell us and we will correct it:{" "}
-        <span className="placeholder">{P.contactEmail}</span>
+        <a href={`mailto:${P.contactEmail}`}>{P.contactEmail}</a>
       </p>
     </LegalShell>
   );

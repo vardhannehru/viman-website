@@ -14,7 +14,7 @@ export default function TermsPage() {
     <LegalShell title={page.title} summary={page.summary} current={page.slug}>
       <p>
         These terms govern your use of this website, operated by{" "}
-        <span className="placeholder">{P.entity}</span> (&ldquo;VIMAN&rdquo;, &ldquo;we&rdquo;). By
+        {P.entity} (&ldquo;VIMAN&rdquo;, &ldquo;we&rdquo;). By
         using the site you accept them. If you do not, please stop using the site.
       </p>
 
@@ -67,7 +67,7 @@ export default function TermsPage() {
       <h2>Intellectual property</h2>
       <p>
         The VIMAN name, mark, design, written material and code on this site belong to{" "}
-        <span className="placeholder">{P.entity}</span> or are used with permission. Regulatory
+        {P.entity} or are used with permission. Regulatory
         terminology, examination names and organisation names belong to their respective owners and
         are used descriptively.
       </p>
@@ -109,9 +109,9 @@ export default function TermsPage() {
 
       <h2>Contact</h2>
       <p>
-        <span className="placeholder">{P.contactEmail}</span>
+        <a href={`mailto:${P.contactEmail}`}>{P.contactEmail}</a>
         <br />
-        <span className="placeholder">{P.address}</span>
+        {P.address}
       </p>
     </LegalShell>
   );

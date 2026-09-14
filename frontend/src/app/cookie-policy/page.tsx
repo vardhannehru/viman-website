@@ -79,7 +79,7 @@ export default function CookiePolicyPage() {
 
       <h2>Contact</h2>
       <p>
-        Questions about this page: <span className="placeholder">{P.privacyEmail}</span>
+        Questions about this page: <a href={`mailto:${P.privacyEmail}`}>{P.privacyEmail}</a>
       </p>
     </LegalShell>
   );

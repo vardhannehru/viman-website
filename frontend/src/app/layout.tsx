@@ -6,7 +6,7 @@ import { Preloader } from "@/components/layout/preloader";
 import { CursorGlow } from "@/components/layout/cursor-glow";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { site } from "@/lib/site";
+import { company, contact, site } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -85,6 +85,18 @@ const jsonLd = {
   description: site.description,
   slogan: `${site.tagline}, ${site.headline}`,
   areaServed: "IN",
+  email: contact.email,
+  telephone: contact.phoneHref.replace("tel:", ""),
+  sameAs: [contact.instagram],
+  legalName: company.legalName,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: company.address.street,
+    addressLocality: company.address.city,
+    addressRegion: company.address.region,
+    postalCode: company.address.postalCode,
+    addressCountry: company.address.country,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

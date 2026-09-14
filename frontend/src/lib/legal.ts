@@ -1,24 +1,25 @@
+import { company, companyAddress, contact } from "./site";
+
 /* --------------------------------------------------------------------------
  *  LEGAL
  *
- *  VIMAN's real corporate details are not known to this codebase. Every fact
- *  that would normally be filled from a company register — legal name, address,
- *  contact addresses, jurisdiction — is a bracketed placeholder here and must
- *  be replaced before the site goes to production. Nothing in the copy claims
- *  compliance with a named regime (GDPR, DPDP, ISO, SOC 2) because none of that
- *  has been verified.
+ *  Legal name, address and contact emails are VIMAN's real details. The
+ *  jurisdiction is still a bracketed placeholder and must be replaced before
+ *  the site goes to production. Nothing in the copy claims compliance with a
+ *  named regime (GDPR, DPDP, ISO, SOC 2) because none of that has been
+ *  verified.
  * -------------------------------------------------------------------------- */
 
 export const legalPlaceholders = {
-  entity: "[Company Legal Name]",
-  address: "[Business Address]",
-  privacyEmail: "[Privacy Email]",
-  contactEmail: "[Contact Email]",
+  entity: company.legalName,
+  address: companyAddress,
+  privacyEmail: contact.email,
+  contactEmail: contact.email,
   jurisdiction: "[Jurisdiction]",
 } as const;
 
 /** Single source for the "Last updated" stamp shown on every legal page. */
-export const legalUpdated = "16 August 2026";
+export const legalUpdated = "14 September 2026";
 
 export type LegalPage = {
   slug: string;

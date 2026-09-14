@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { navItems, site } from "@/lib/site";
+import { contact, navItems, site } from "@/lib/site";
 import { legalPages } from "@/lib/legal";
 import { Wordmark } from "./logo";
+import { InstagramIcon } from "@/components/ui/instagram-icon";
 
 /**
  * The footer is the one part of the page that is not part of the film. It is
@@ -23,7 +24,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-14 gap-y-10 sm:gap-x-20">
+          <div className="grid grid-cols-2 gap-x-14 gap-y-10 sm:grid-cols-3 sm:gap-x-16">
             <nav aria-label="Sections">
               <h2 className="mono-label text-mist-deep">Guide</h2>
               <ul className="mt-6 space-y-3">
@@ -45,6 +46,40 @@ export function Footer() {
                 ))}
               </ul>
             </nav>
+
+            <div>
+              <h2 className="mono-label text-mist-deep">Contact</h2>
+              <ul className="mt-6 space-y-3 text-[0.9375rem]">
+                <li>
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="text-cloud-dim transition-colors duration-300 hover:text-cloud"
+                  >
+                    {contact.email}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={contact.phoneHref}
+                    className="text-cloud-dim transition-colors duration-300 hover:text-cloud"
+                  >
+                    {contact.phone}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={contact.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-cloud-dim transition-colors duration-300 hover:text-cloud"
+                  >
+                    <InstagramIcon className="h-4 w-4" />
+                    <span className="sr-only">Instagram </span>
+                    {contact.instagramHandle}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
