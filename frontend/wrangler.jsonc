@@ -1,0 +1,10 @@
+// Cloudflare hosting for viman1.com. `npm run build` writes the site to out/,
+// then `npx wrangler deploy` uploads that folder as static assets.
+{
+  "name": "viman-website",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}

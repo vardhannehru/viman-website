@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 import path from "node:path";
 
 const nextConfig: NextConfig = {
+  // Build the whole site as plain files in out/ — Cloudflare serves them as
+  // static assets (see wrangler.jsonc). Nothing here needs a server.
+  output: "export",
   reactStrictMode: true,
   poweredByHeader: false,
   // Pin tracing to this project — a stray lockfile in the home directory

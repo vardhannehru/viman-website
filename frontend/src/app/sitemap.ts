@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { guideSlugs, site } from "@/lib/site";
 import { legalPages } from "@/lib/legal";
 
+// Written once at build time — the site is exported as plain files.
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
